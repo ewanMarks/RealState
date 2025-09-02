@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="RealState\Owners\Resources\CodesResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CodesResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="RealState\Owners\Resources\OwnersResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>OwnersResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="RealState\Owners\Resources\CodesResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CodesResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RealState\Owners\Resources\OwnersResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OwnersResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="RealState\Properties\Errors\" />
+    <Folder Include="RealState\Properties\Resources\" />
+    <Folder Include="RealState\Properties\Repositories\" />
+  </ItemGroup>
+
+</Project>
