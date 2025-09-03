@@ -38,4 +38,11 @@ public static class OwnerErrors
         CodesResources.OwnerPhotoInvalid,
         OwnersResources.OwnerPhotoInvalid);
 
+    public static Error OwnerAlreadyInactive(Guid ownerId) => Error.Conflict(
+        CodesResources.OwnerAlreadyInactive,
+        string.Format(CultureInfo.InvariantCulture, OwnersResources.OwnerAlreadyInactive_Id, ownerId));
+
+    public static Error OwnerAlreadyActive(Guid ownerId) => Error.Conflict(
+        CodesResources.OwnerAlreadyActive,
+        string.Format(CultureInfo.InvariantCulture, OwnersResources.OwnerAlreadyActive_Id, ownerId));
 }

@@ -15,9 +15,7 @@ internal sealed class Delete : IEndpoint
         app.MapDelete($"{Tags.Owner}/{nameof(Delete)}", async ([FromQuery] Guid id, [FromServices] ISender sender, CancellationToken cancellationToken) =>
         {
             var command = new DeleteOwnerCommand(id);
-
             Result<Guid> result = await sender.Send(command, cancellationToken);
-
             return result.Match(Results.Ok, CustomResults.Problem);
         })
         .WithTags(Tags.Owner)

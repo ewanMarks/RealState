@@ -9,7 +9,7 @@ IConfigurationManager configuration = builder.Configuration;
 IHostEnvironment environment = builder.Environment;
 
 configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-           .AddJsonFile($"appsettings.{environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
+    .AddJsonFile($"appsettings.{environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
 
 
 services

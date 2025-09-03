@@ -61,6 +61,24 @@ namespace RealState.Domain.RealState.Owners.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RealState.OwnerAlreadyActive.
+        /// </summary>
+        internal static string OwnerAlreadyActive {
+            get {
+                return ResourceManager.GetString("OwnerAlreadyActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RealState.OwnerAlreadyInactive.
+        /// </summary>
+        internal static string OwnerAlreadyInactive {
+            get {
+                return ResourceManager.GetString("OwnerAlreadyInactive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RealState.OwnerBirthdayInvalid.
         /// </summary>
         internal static string OwnerBirthdayInvalid {

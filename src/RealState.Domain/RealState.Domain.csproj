@@ -18,6 +18,26 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>OwnersResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="RealState\Properties\Resources\CodeResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CodeResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="RealState\Properties\Resources\PropertiesResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PropertiesResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="RealState\Users\Resources\CodesResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CodesResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="RealState\Users\Resources\UsersResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UsersResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -29,12 +49,26 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>OwnersResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="RealState\Properties\Resources\CodeResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CodeResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RealState\Properties\Resources\PropertiesResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropertiesResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RealState\Users\Resources\CodesResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CodesResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="RealState\Users\Resources\UsersResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UsersResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="RealState\Properties\Errors\" />
-    <Folder Include="RealState\Properties\Resources\" />
-    <Folder Include="RealState\Properties\Repositories\" />
+    <Folder Include="RealState\Users\ValueObjects\" />
   </ItemGroup>
 
 </Project>

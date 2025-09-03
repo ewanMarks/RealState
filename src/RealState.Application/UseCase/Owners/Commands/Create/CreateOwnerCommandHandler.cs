@@ -12,8 +12,9 @@ public sealed class CreateOwnerCommandHandler(IOwnerRepository ownerRepository)
 {
     public async Task<Result<Guid>> Handle(CreateOwnerCommand request, CancellationToken cancellationToken)
     {
+        var normalized = request.Name.Trim();
 
-        if (await ownerRepository.ExistsAsync(x => x.Name == request.Name))
+        if (await ownerRepository.ExistsAsync(x => x.Name.ToLower() == normalized.ToLower()))
         {
             return Result.Failure<Guid>(OwnerErrors.OwnerConflict(request.Name));
         }

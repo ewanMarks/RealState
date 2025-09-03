@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="OwnerAlreadyActive" xml:space="preserve">
+    <value>RealState.OwnerAlreadyActive</value>
+  </data>
+  <data name="OwnerAlreadyInactive" xml:space="preserve">
+    <value>RealState.OwnerAlreadyInactive</value>
+  </data>
   <data name="OwnerBirthdayInvalid" xml:space="preserve">
     <value>RealState.OwnerBirthdayInvalid</value>
   </data>

@@ -2,8 +2,12 @@
 using Microsoft.Extensions.DependencyInjection;
 using RealState.Domain.Abstractions.Interfaces;
 using RealState.Domain.RealState.Owners.Repositories;
+using RealState.Domain.RealState.Properties.Repositories;
+using RealState.Domain.RealState.Users.Repositories;
 using RealState.Infrastructure.Repository.RealState;
 using RealState.Infrastructure.Repository.RealState.Owners;
+using RealState.Infrastructure.Repository.RealState.Properties;
+using RealState.Infrastructure.Repository.RealState.Users;
 
 namespace RealState.Infrastructure.Extension;
 
@@ -14,6 +18,11 @@ public static class RepositoriesExtension
         services.AddScoped(typeof(IRepository<>), typeof(RealStateRepository<>));
 
         services.AddScoped<IOwnerRepository, OwnerRepository>();
+        services.AddScoped<IPropertyRepository, PropertyRepository>();
+        services.AddScoped<IPropertyImageRepository, PropertyImageRepository>();
+        services.AddScoped<IPropertyTraceRepository, PropertyTraceRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
+
         return services;
     }
 }

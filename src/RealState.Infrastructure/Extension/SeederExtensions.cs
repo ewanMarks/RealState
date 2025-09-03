@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using RealState.Infrastructure.Persistence.Context;
@@ -10,28 +10,32 @@ public static class SeederExtensions
 {
     public static async Task RunSeedersAsync(this IServiceProvider serviceProvider)
     {
-        using IServiceScope scope = serviceProvider.CreateScope();
+        using var scope = serviceProvider.CreateScope();
+        var logger = scope.ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger("SeederRunner");
+        var realStateContext = scope.ServiceProvider.GetRequiredService<RealStateDbContext>();
 
-        ILogger logger = scope.ServiceProvider.GetRequiredService<ILoggerFactory>()
-                                          .CreateLogger("SeederRunner");
-
-        RealStateDbContext realStateContext = scope.ServiceProvider.GetRequiredService<RealStateDbContext>();
-
-        await using IDbContextTransaction transaction = await realStateContext.Database.BeginTransactionAsync();
-        try
+        var strategy = realStateContext.Database.CreateExecutionStrategy();
+        await strategy.ExecuteAsync(async () =>
         {
-            var seederManager = new SeederManager();
+            await using var transaction = await realStateContext.Database.BeginTransactionAsync();
+            try
+            {
+                var seederManager = new SeederManager();
 
-            logger.LogInformation("Iniciando seeders para RealStateDbContext...");
-            await seederManager.SeedRealStateDatabase(realStateContext);
+                logger.LogInformation("Iniciando seeders para RealStateDbContext...");
+                await seederManager.SeedRealStateDatabase(realStateContext);
 
-            await transaction.CommitAsync();
-            logger.LogInformation("Seeders ejecutados correctamente.");
-        }
-        catch
-        {
-            await transaction.RollbackAsync();
-            throw;
-        }
+                await realStateContext.SaveChangesAsync();
+
+                await transaction.CommitAsync();
+                logger.LogInformation("Seeders ejecutados correctamente.");
+            }
+            catch
+            {
+                await transaction.RollbackAsync();
+                throw;
+            }
+        });
     }
+
 }

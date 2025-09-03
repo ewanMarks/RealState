@@ -61,6 +61,15 @@ namespace RealState.Api.Endpoints.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auth.
+        /// </summary>
+        internal static string Auth {
+            get {
+                return ResourceManager.GetString("Auth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Owner.
         /// </summary>
         internal static string Owner {

@@ -126,6 +126,9 @@
   <data name="MaxCharName" xml:space="preserve">
     <value>El nombre no debe exceder 150 caracteres.</value>
   </data>
+  <data name="NotOptionalId" xml:space="preserve">
+    <value>El identificador del propietario es obligatorio.</value>
+  </data>
   <data name="NotOptionalName" xml:space="preserve">
     <value>El nombre es obligatorio.</value>
   </data>

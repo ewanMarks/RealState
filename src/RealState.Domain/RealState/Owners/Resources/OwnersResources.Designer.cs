@@ -61,6 +61,24 @@ namespace RealState.Domain.RealState.Owners.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El propietario con Id &apos;{0}&apos; ya se encuentra activo..
+        /// </summary>
+        internal static string OwnerAlreadyActive_Id {
+            get {
+                return ResourceManager.GetString("OwnerAlreadyActive_Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to El propietario con Id &apos;{0}&apos; ya se encuentra inactivo..
+        /// </summary>
+        internal static string OwnerAlreadyInactive_Id {
+            get {
+                return ResourceManager.GetString("OwnerAlreadyInactive_Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to La fecha de cumpleaños &apos;{0}&apos; no es válida (no puede ser futura)..
         /// </summary>
         internal static string OwnerBirthdayInvalid {

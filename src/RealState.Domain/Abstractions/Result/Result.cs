@@ -1,8 +1,6 @@
-﻿using RealState.Domain.Abstractions.Interfaces;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace RealState.Domain.Abstractions.Result;
-
 
 public class Result
 {
@@ -19,7 +17,6 @@ public class Result
     }
 
     public bool IsSuccess { get; }
-
     public bool IsFailure => !IsSuccess;
 
     public Error Error { get; }

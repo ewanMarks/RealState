@@ -14,7 +14,8 @@ public class SeederManager
             new OwnerSeeder(),
             new PropertySeeder(),
             new PropertyImageSeeder(),
-            new PropertyTraceSeeder()
+            new PropertyTraceSeeder(),
+            new UserSeeder()
         ];
     }
 

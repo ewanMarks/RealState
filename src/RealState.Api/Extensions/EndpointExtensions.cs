@@ -11,7 +11,7 @@ public static class EndpointExtensions
         ServiceDescriptor[] serviceDescriptors = [.. assembly
             .DefinedTypes
             .Where(type => type is { IsAbstract: false, IsInterface: false } &&
-                           type.IsAssignableTo(typeof(IEndpoint)))
+                type.IsAssignableTo(typeof(IEndpoint)))
             .Select(type => ServiceDescriptor.Transient(typeof(IEndpoint), type))];
 
         services.TryAddEnumerable(serviceDescriptors);
@@ -24,7 +24,6 @@ public static class EndpointExtensions
         RouteGroupBuilder? routeGroupBuilder = null)
     {
         IEnumerable<IEndpoint> endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
-
         IEndpointRouteBuilder builder = routeGroupBuilder is null ? app : routeGroupBuilder;
 
         foreach (IEndpoint endpoint in endpoints)

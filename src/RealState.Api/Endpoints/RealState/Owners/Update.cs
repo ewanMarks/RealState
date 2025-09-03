@@ -17,9 +17,7 @@ internal sealed class Update : IEndpoint
         app.MapPut($"{Tags.Owner}/{nameof(Update)}", async ([FromBody] UpdateOwnerRequest request, [FromServices] ISender sender, CancellationToken cancellationToken) =>
         {
             UpdateOwnerCommand command = request.Adapt<UpdateOwnerCommand>();
-
             Result<Guid> result = await sender.Send(command, cancellationToken);
-
             return result.Match(Results.Ok, CustomResults.Problem);
         })
         .WithTags(Tags.Owner)

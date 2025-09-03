@@ -10,9 +10,9 @@ public static class DependencyInjection
     public static IServiceCollection AddPresentation(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddOpenApi();
+        services.AddAuthJwt(configuration);
         services.AddSwaggerGenWithAuth();
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
         services.AddHealthChecks();
         services.AddControllers();
         services.AddProblemDetails();
@@ -25,10 +25,13 @@ public static class DependencyInjection
 
     public static WebApplication UsePresentation(this WebApplication app, IConfiguration configuration)
     {
-        app.MapEndpoints();
-
+        app.UseExceptionHandler();
+        app.UseHttpsRedirection();
         app.UseCorsConfiguration(configuration);
-
+        app.UseAuthentication();
+        app.UseAuthorization();
+        app.MapControllers();
+        app.MapEndpoints();
         app.MapOpenApi();
         app.UseSwaggerWithUi();
 
@@ -37,11 +40,6 @@ public static class DependencyInjection
             ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
         });
 
-        app.UseHttpsRedirection();
-        app.UseExceptionHandler();
-        app.UseAuthentication();
-        app.UseAuthorization();
-        app.MapControllers();
         return app;
     }
 }

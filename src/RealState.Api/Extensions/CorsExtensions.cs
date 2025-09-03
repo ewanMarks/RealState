@@ -21,9 +21,9 @@ internal static class CorsExtensions
 
         services.AddCors(options => options.AddPolicy(CorsPolicyName,
             builder => builder.WithOrigins(allowedOrigins)
-                       .WithMethods(allowedMethods)
-                       .WithHeaders(allowedHeaders)
-                       .AllowCredentials()));
+                .WithMethods(allowedMethods)
+                .WithHeaders(allowedHeaders)
+                .AllowCredentials()));
 
         return services;
     }

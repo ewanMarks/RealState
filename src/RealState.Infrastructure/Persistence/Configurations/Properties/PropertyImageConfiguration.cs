@@ -6,16 +6,31 @@ namespace RealState.Infrastructure.Persistence.Configurations.Properties;
 
 public class PropertyImageConfiguration : IEntityTypeConfiguration<PropertyImage>
 {
-    public void Configure(EntityTypeBuilder<PropertyImage> b)
+    public void Configure(EntityTypeBuilder<PropertyImage> builder)
     {
-        b.ToTable("PropertyImage");
-        b.HasKey(x => x.Id);
-        b.Property(x => x.File).HasMaxLength(500).IsRequired();
-        b.Property(x => x.Enabled).HasDefaultValue(true);
+        builder.ToTable(nameof(PropertyImage), SchemaResources.Properties);
+        builder.HasKey(x => x.Id);
 
-        b.HasOne(x => x.Property)
-         .WithMany(p => p.Images)
-         .HasForeignKey(x => x.IdProperty)
-         .OnDelete(DeleteBehavior.Cascade);
+        builder.Property(x => x.IdProperty).IsRequired();
+
+        builder.Property(x => x.File)
+            .HasMaxLength(500)
+            .IsRequired();
+
+        builder.Property(x => x.Enabled)
+            .IsRequired();
+
+        builder.HasIndex(x => x.IdProperty);
+        builder.HasIndex(x => new { x.IdProperty, x.File }).IsUnique();
+
+        builder.HasOne<Property>()
+            .WithMany(p => p.Images)
+            .HasForeignKey(x => x.IdProperty)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Property(x => x.CreatedOn).IsRequired();
+        builder.Property(x => x.CreatedBy).IsRequired();
+        builder.Property(x => x.LastModifiedOn);
+        builder.Property(x => x.LastModifiedBy);
     }
 }

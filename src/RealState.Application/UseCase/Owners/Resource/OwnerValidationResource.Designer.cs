@@ -88,6 +88,15 @@ namespace RealState.Application.UseCase.Owners.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El identificador del propietario es obligatorio..
+        /// </summary>
+        internal static string NotOptionalId {
+            get {
+                return ResourceManager.GetString("NotOptionalId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El nombre es obligatorio..
         /// </summary>
         internal static string NotOptionalName {

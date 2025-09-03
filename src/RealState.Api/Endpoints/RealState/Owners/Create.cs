@@ -20,7 +20,7 @@ internal sealed class Create : IEndpoint
             Result<Guid> result = await sender.Send(command, cancellationToken);
             return result.Match(Results.Ok, CustomResults.Problem);
         })
-        .WithTags(Tags.Owner)
-        .RequireAuthorization();
+        .RequireAuthorization()
+        .WithTags(Tags.Owner);
     }
 }

@@ -21,24 +21,79 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCase\Propertiess\Queries\" />
-    <Folder Include="UseCase\PropertyTraces\" />
-    <Folder Include="UseCase\PropertyImages\" />
-    <Folder Include="UseCase\Owners\Queries\" />
+    <Folder Include="UseCase\Auth\Queries\" />
+    <Folder Include="UseCase\ChangePrice\DTOs\" />
+    <Folder Include="UseCase\ChangePrice\Queries\" />
+    <Folder Include="UseCase\PropertyImages\DTOs\" />
+    <Folder Include="UseCase\PropertyImages\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="UseCase\Auth\Resources\AuthValidationResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AuthValidationResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="UseCase\ChangePrice\Resources\PropertyChangePriceValidationResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PropertyChangePriceValidationResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="UseCase\Owners\Resource\OwnerListValidationResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>OwnerListValidationResource.resx</DependentUpon>
+    </Compile>
     <Compile Update="UseCase\Owners\Resource\OwnerValidationResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>OwnerValidationResource.resx</DependentUpon>
     </Compile>
+    <Compile Update="UseCase\Properties\Resource\PropertyListValidationResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PropertyListValidationResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="UseCase\Properties\Resource\PropertyValidationResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PropertyValidationResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="UseCase\PropertyImages\Resources\PropertyImageValidationResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PropertyImageValidationResource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="UseCase\Auth\Resources\AuthValidationResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AuthValidationResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UseCase\ChangePrice\Resources\PropertyChangePriceValidationResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropertyChangePriceValidationResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UseCase\Owners\Resource\OwnerListValidationResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OwnerListValidationResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="UseCase\Owners\Resource\OwnerValidationResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>OwnerValidationResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UseCase\Properties\Resource\PropertyListValidationResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropertyListValidationResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UseCase\Properties\Resource\PropertyValidationResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropertyValidationResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UseCase\PropertyImages\Resources\PropertyImageValidationResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PropertyImageValidationResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

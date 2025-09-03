@@ -13,10 +13,10 @@ public sealed class CreateOwnerValidator : AbstractValidator<CreateOwnerCommand>
     {
         RuleFor(x => x.Name)
             .NotEmpty().WithMessage(OwnerValidationResource.NotOptionalName)
-            .MaximumLength(150).WithMessage(OwnerValidationResource.MaxCharName);
+            .MaximumLength(200).WithMessage(OwnerValidationResource.MaxCharName);
 
         RuleFor(x => x.Address)
-            .MaximumLength(250).When(x => x.Address is not null);
+            .MaximumLength(300).When(x => x.Address is not null);
 
         RuleFor(x => x.Photo)
             .Must(v => string.IsNullOrWhiteSpace(v) || UrlRegex.IsMatch(v!) || IsBase64(v!))
