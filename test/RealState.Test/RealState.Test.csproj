@@ -29,14 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Integration\Api\" />
-    <Folder Include="Integration\Infrastructure\" />
-    <Folder Include="TestsUtils\" />
-    <Folder Include="Unit\Owners\" />
-    <Folder Include="Unit\Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\RealState.Api\RealState.Api.csproj" />
     <ProjectReference Include="..\..\src\RealState.Application\RealState.Application.csproj" />
     <ProjectReference Include="..\..\src\RealState.Domain\RealState.Domain.csproj" />
