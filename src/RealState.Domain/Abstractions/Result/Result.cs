@@ -2,6 +2,9 @@
 
 namespace RealState.Domain.Abstractions.Result;
 
+/// <summary>
+/// Representa el resultado de una operación sin valor de retorno.
+/// </summary>
 public class Result
 {
     public Result(bool isSuccess, Error error)

@@ -8,17 +8,26 @@ using System.Text;
 
 namespace RealState.Infrastructure.Security;
 
+/// <summary>
+/// Servicio encargado de generar tokens JWT para autenticación.
+/// </summary>
 public sealed class JwtTokenService : IJwtTokenService
 {
     private readonly JwtOptions _options;
     private readonly byte[] _key;
 
+    /// <summary>
+    /// Inicializa una nueva instancia de <see cref="JwtTokenService"/> con las opciones configuradas.
+    /// </summary>
     public JwtTokenService(IOptions<JwtOptions> options)
     {
         _options = options.Value;
         _key = Encoding.UTF8.GetBytes(_options.Key);
     }
 
+    /// <summary>
+    /// Genera un token JWT con los claims estándar para un usuario.
+    /// </summary>
     public (string AccessToken, DateTime ExpiresAtUtc) Generate(Guid userId, string email, string role)
     {
         var now = DateTime.UtcNow;

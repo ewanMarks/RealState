@@ -6,9 +6,15 @@ using RealState.Domain.RealState.Owners.Repositories;
 
 namespace RealState.Application.UseCase.Owners.Commands.Delete;
 
+/// <summary>
+/// Handler del comando <see cref="DeleteOwnerCommand"/> encargado de eliminar físicamente un propietario.
+/// </summary>
 public sealed class DeleteOwnerCommandHandler(IOwnerRepository ownerRepository)
     : ICommandHandler<DeleteOwnerCommand, Guid>
 {
+    /// <summary>
+    /// Maneja el comando de eliminación de un propietario.
+    /// </summary>
     public async Task<Result<Guid>> Handle(DeleteOwnerCommand request, CancellationToken cancellationToken)
     {
         Owner owner = await ownerRepository.GetByIdAsync(request.Id, cancellationToken);

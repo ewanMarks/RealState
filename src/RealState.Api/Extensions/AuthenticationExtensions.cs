@@ -5,8 +5,15 @@ using System.Text;
 
 namespace RealState.Api.Extensions;
 
+/// <summary>
+/// Métodos de extensión para configurar la autenticación y autorización
+/// basada en JWT dentro de la aplicación.
+/// </summary>
 internal static class AuthenticationExtensions
 {
+    /// <summary>
+    /// Configura el esquema de autenticación JWT Bearer y registra autorización.
+    /// </summary>
     internal static IServiceCollection AddAuthJwt(this IServiceCollection services, IConfiguration configuration)
     {
         var jwt = configuration.GetSection("Jwt").Get<JwtOptions>()!;

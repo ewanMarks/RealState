@@ -7,9 +7,15 @@ using RealState.Domain.RealState.Users.Repositories;
 
 namespace RealState.Application.UseCase.Auth.Commands.Login;
 
+/// <summary>
+/// Handler del comando <see cref="LoginCommand"/> encargado de autenticar usuarios.
+/// </summary
 public sealed class LoginCommandHandler(IUserRepository userRepository, IPasswordHasher passwordHasher, IJwtTokenService jwtTokenService)
     : ICommandHandler<LoginCommand, AuthResult>
 {
+    /// <summary>
+    /// Maneja el comando de login y retorna un resultado con un JWT si las credenciales son válidas.
+    /// </summary>
     public async Task<Result<AuthResult>> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
         var user = await userRepository.GetByEmailAsync(request.Email, cancellationToken);

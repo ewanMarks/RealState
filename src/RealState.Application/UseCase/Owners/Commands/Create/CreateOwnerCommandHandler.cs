@@ -7,9 +7,15 @@ using RealState.Domain.RealState.Owners.Repositories;
 
 namespace RealState.Application.UseCase.Owners.Commands.Create;
 
+/// <summary>
+/// Handler del comando <see cref="CreateOwnerCommand"/> encargado de crear un nuevo propietario.
+/// </summary>
 public sealed class CreateOwnerCommandHandler(IOwnerRepository ownerRepository)
     : ICommandHandler<CreateOwnerCommand, Guid>
 {
+    /// <summary>
+    /// Maneja el comando de creación de propietario.
+    /// </summary>
     public async Task<Result<Guid>> Handle(CreateOwnerCommand request, CancellationToken cancellationToken)
     {
         var normalized = request.Name.Trim();

@@ -6,9 +6,15 @@ using RealState.Domain.RealState.Properties.Repositories;
 
 namespace RealState.Application.UseCase.Properties.Commands.Update;
 
+/// <summary>
+/// Handler para el comando <see cref="UpdatePropertyCommand"/>.
+/// </summary>
 public sealed class UpdatePropertyCommandHandler(IPropertyRepository propertyRepository)
     : ICommandHandler<UpdatePropertyCommand, Guid>
 {
+    /// <summary>
+    /// Maneja la ejecución del comando <see cref="UpdatePropertyCommand"/>.
+    /// </summary>
     public async Task<Result<Guid>> Handle(UpdatePropertyCommand request, CancellationToken cancellationToken)
     {
         Property? property = await propertyRepository.GetByIdAsync(request.Id, cancellationToken);

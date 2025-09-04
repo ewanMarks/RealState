@@ -1,9 +1,16 @@
 ﻿namespace RealState.Api.Extensions;
 
+/// <summary>
+/// Métodos de extensión para configurar CORS (Cross-Origin Resource Sharing)
+/// en la aplicación.
+/// </summary>
 internal static class CorsExtensions
 {
     private const string CorsPolicyName = "CustomCorsPolicy";
 
+    /// <summary>
+    /// Nombre de la política de CORS personalizada.
+    /// </summary>
     public static IServiceCollection AddCorsConfiguration(this IServiceCollection services, IConfiguration configuration)
     {
         string allowedOriginsValue = configuration["CORS-SETTINGS-ALLOWED-ORIGINS"]
@@ -28,6 +35,9 @@ internal static class CorsExtensions
         return services;
     }
 
+    /// <summary>
+    /// Aplica la política de CORS configurada en el pipeline de la aplicación.
+    /// </summary>
     public static IApplicationBuilder UseCorsConfiguration(this IApplicationBuilder app, IConfiguration configuration)
     {
         if (configuration["CORS-SETTINGS-ALLOWED-ORIGINS"] is not null)

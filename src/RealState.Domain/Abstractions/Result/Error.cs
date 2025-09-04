@@ -1,5 +1,11 @@
 ﻿namespace RealState.Domain.Abstractions.Result;
 
+/// <summary>
+/// Representa un error dentro del flujo de negocio o de aplicación.
+/// </summary>
+/// <remarks>
+/// Encapsula un código, una descripción y un tipo de error definido en <see cref="ErrorType"/>.
+/// </remarks>
 public record Error
 {
     public static readonly Error None = new(string.Empty, string.Empty, ErrorType.Failure);

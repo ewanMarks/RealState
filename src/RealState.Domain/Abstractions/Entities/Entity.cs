@@ -1,5 +1,8 @@
 ﻿namespace RealState.Domain.Abstractions.Entities;
 
+/// <summary>
+/// Clase base para todas las entidades del dominio.
+/// </summary>
 public abstract class Entity
 {
     public Guid Id { get; protected set; } = Guid.NewGuid();

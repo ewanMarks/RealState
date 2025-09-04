@@ -6,21 +6,35 @@ using RealState.Infrastructure.Persistence.Context;
 
 namespace RealState.Infrastructure.Repository.RealState.Properties;
 
+/// <summary>
+/// Implementación del repositorio <see cref="IPropertyRepository"/> 
+/// para la entidad <see cref="Property"/>.
+/// </summary>
 public class PropertyRepository(RealStateDbContext context)
     : RealStateRepository<Property>(context), IPropertyRepository
 {
     private readonly RealStateDbContext _context = context;
 
+    /// <summary>
+    /// Verifica si existe una propiedad con el mismo código interno.
+    /// </summary>
     public Task<bool> CodeInternalExistsAsync(string codeInternal, CancellationToken cancellationToken = default) =>
         _context.Properties
             .AsNoTracking()
             .AnyAsync(p => p.CodeInternal == codeInternal, cancellationToken);
 
+    /// <summary>
+    /// Verifica si existe otra propiedad con el mismo código interno,
+    /// excluyendo una propiedad específica.
+    /// </summary>
     public Task<bool> CodeInternalExistsForOtherAsync(Guid idProperty, string codeInternal, CancellationToken cancellationToken = default) =>
         _context.Properties
             .AsNoTracking()
             .AnyAsync(p => p.Id != idProperty && p.CodeInternal == codeInternal, cancellationToken);
 
+    /// <summary>
+    /// Obtiene una lista paginada de propiedades aplicando filtros y ordenamiento dinámico.
+    /// </summary>
     public async Task<IReadOnlyList<Property>> GetListAsync(PropertyFilters filters, CancellationToken cancellationToken = default)
     {
         var query = ApplyFilters(_context.Properties.AsNoTracking(), filters);
@@ -37,6 +51,9 @@ public class PropertyRepository(RealStateDbContext context)
         return await query.ToListAsync(cancellationToken);
     }
 
+    /// <summary>
+    /// Cuenta el número de propiedades que cumplen con los filtros especificados.
+    /// </summary>
     public Task<int> CountAsync(PropertyFilters filters, CancellationToken cancellationToken = default)
     {
         var query = ApplyFilters(_context.Properties.AsNoTracking(), filters);
@@ -44,6 +61,9 @@ public class PropertyRepository(RealStateDbContext context)
     }
 
     #region Métodos Privados
+    /// <summary>
+    /// Aplica filtros dinámicos a la consulta de propiedades.
+    /// </summary>
     private static IQueryable<Property> ApplyFilters(IQueryable<Property> source, PropertyFilters f)
     {
         if (f.IdOwner.HasValue)
@@ -99,6 +119,9 @@ public class PropertyRepository(RealStateDbContext context)
         return source;
     }
 
+    /// <summary>
+    /// Aplica ordenamiento dinámico a la consulta de propiedades.
+    /// </summary>
     private static IQueryable<Property> ApplySorting(IQueryable<Property> source, PropertyFilters f)
     {
         var sortBy = (f.SortBy ?? "CreatedOn").Trim();

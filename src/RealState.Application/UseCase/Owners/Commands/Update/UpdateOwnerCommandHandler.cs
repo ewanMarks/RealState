@@ -7,9 +7,15 @@ using RealState.Domain.RealState.Owners.Repositories;
 
 namespace RealState.Application.UseCase.Owners.Commands.Update;
 
+/// <summary>
+/// Handler del comando <see cref="UpdateOwnerCommand"/> encargado de actualizar los datos de un propietario.
+/// </summary>
 public sealed class UpdateOwnerCommandHandler(IOwnerRepository ownerRepository)
     : ICommandHandler<UpdateOwnerCommand, Guid>
 {
+    /// <summary>
+    /// Maneja el comando de actualización de propietario.
+    /// </summary>
     public async Task<Result<Guid>> Handle(UpdateOwnerCommand request, CancellationToken cancellationToken)
     {
         Owner? owner = await ownerRepository.GetByIdAsync(request.Id, cancellationToken);
@@ -32,6 +38,7 @@ public sealed class UpdateOwnerCommandHandler(IOwnerRepository ownerRepository)
             return Result.Failure<Guid>(OwnerErrors.OwnerBirthdayInvalid(request.Birthday.Value));
         }
 
+        // Adaptar datos del request a la entidad existente
         (request, owner).Adapt(owner);
         await ownerRepository.UpdateAsync(owner);
 

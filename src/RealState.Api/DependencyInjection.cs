@@ -5,8 +5,16 @@ using System.Reflection;
 
 namespace RealState.Api;
 
+/// <summary>
+/// Métodos de extensión para registrar y configurar los servicios 
+/// y middlewares de la capa de presentación (API).
+/// </summary>
 public static class DependencyInjection
 {
+    /// <summary>
+    /// Registra en el contenedor de dependencias todos los servicios necesarios 
+    /// para la capa de presentación (controllers, endpoints, swagger, CORS, etc.).
+    /// </summary>
     public static IServiceCollection AddPresentation(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddOpenApi();
@@ -23,6 +31,9 @@ public static class DependencyInjection
         return services;
     }
 
+    /// <summary>
+    /// Configura el pipeline de middlewares para la capa de presentación.
+    /// </summary>
     public static WebApplication UsePresentation(this WebApplication app, IConfiguration configuration)
     {
         app.UseExceptionHandler();

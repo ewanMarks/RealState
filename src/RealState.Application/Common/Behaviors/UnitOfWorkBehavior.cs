@@ -6,11 +6,16 @@ using RealState.Domain.Abstractions.Result;
 
 namespace RealState.Application.Common.Behaviors;
 
-public sealed class UnitOfWorkBehavior<TRequest, TResponse>(
-    IUnitOfWork uow,
-    ILogger<UnitOfWorkBehavior<TRequest, TResponse>> logger
-) : IPipelineBehavior<TRequest, TResponse>
+/// <summary>
+/// Comportamiento de pipeline de MediatR que aplica el patrón Unit of Work
+/// para los comandos que implementan <see cref="IBaseCommand"/>.
+/// </summary>
+public sealed class UnitOfWorkBehavior<TRequest, TResponse>(IUnitOfWork uow, ILogger<UnitOfWorkBehavior<TRequest, TResponse>> logger)
+    : IPipelineBehavior<TRequest, TResponse>
 {
+    /// <summary>
+    /// Maneja la ejecución de la solicitud y decide si aplicar <see cref="IUnitOfWork"/>.
+    /// </summary>
     public async Task<TResponse> Handle(
         TRequest request,
         RequestHandlerDelegate<TResponse> next,
@@ -34,6 +39,9 @@ public sealed class UnitOfWorkBehavior<TRequest, TResponse>(
         return response;
     }
 
+    /// <summary>
+    /// Evalúa si la respuesta indica éxito (para <see cref="Result"/> o <see cref="Result{T}"/>).
+    /// </summary>
     private static bool IsSuccess(TResponse response) =>
         response switch
         {

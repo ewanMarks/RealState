@@ -6,8 +6,14 @@ using RealState.Infrastructure.Seeders;
 
 namespace RealState.Infrastructure.Extension;
 
+/// <summary>
+/// Métodos de extensión para ejecutar los seeders de la base de datos.
+/// </summary>
 public static class SeederExtensions
 {
+    /// <summary>
+    /// Ejecuta los seeders configurados para inicializar la base de datos <see cref="RealStateDbContext"/>.
+    /// </summary>
     public static async Task RunSeedersAsync(this IServiceProvider serviceProvider)
     {
         using var scope = serviceProvider.CreateScope();

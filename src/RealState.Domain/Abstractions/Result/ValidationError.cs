@@ -1,5 +1,8 @@
 ﻿namespace RealState.Domain.Abstractions.Result;
 
+/// <summary>
+/// Representa un error de validación que puede contener múltiples fallos.
+/// </summary>
 public sealed record ValidationError : Error
 {
     public ValidationError(Error[] errors)

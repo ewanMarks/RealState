@@ -8,8 +8,14 @@ using RealState.Infrastructure.UnitOfWorks;
 
 namespace RealState.Infrastructure.Extension;
 
+/// <summary>
+/// Métodos de extensión para registrar la capa de persistencia en el contenedor de dependencias.
+/// </summary>
 public static class PersistenceExtension
 {
+    /// <summary>
+    /// Agrega y configura la capa de persistencia para la aplicación RealState.
+    /// </summary>
     public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("RealState")

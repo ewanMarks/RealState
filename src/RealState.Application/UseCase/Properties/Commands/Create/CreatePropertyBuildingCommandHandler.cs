@@ -8,9 +8,15 @@ using RealState.Domain.RealState.Properties.Repositories;
 
 namespace RealState.Application.UseCase.Properties.Commands.Create;
 
+/// <summary>
+/// Handler del comando <see cref="CreatePropertyBuildingCommand"/> encargado de crear una nueva propiedad.
+/// </summary>
 public sealed class CreatePropertyBuildingCommandHandler(IPropertyRepository propertyRepository, IOwnerRepository ownerRepository)
     : ICommandHandler<CreatePropertyBuildingCommand, Guid>
 {
+    /// <summary>
+    /// Maneja el comando de creación de propiedad.
+    /// </summary>
     public async Task<Result<Guid>> Handle(CreatePropertyBuildingCommand request, CancellationToken cancellationToken)
     {
         if (!await ownerRepository.ExistsAsync(o => o.Id == request.IdOwner))
@@ -23,6 +29,7 @@ public sealed class CreatePropertyBuildingCommandHandler(IPropertyRepository pro
             return Result.Failure<Guid>(PropertyErrors.PropertyConflict_Code(request.CodeInternal));
         }
 
+        // Adaptar DTO con entidad
         Property property = request.Adapt<Property>();
 
         await propertyRepository.AddAsync(property, cancellationToken);

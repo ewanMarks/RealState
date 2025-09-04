@@ -7,8 +7,14 @@ using System.Reflection;
 
 namespace RealState.Application;
 
+/// <summary>
+/// Punto de extensión para registrar los servicios de la capa Application.
+/// </summary>
 public static class DependencyInjection
 {
+    /// <summary>
+    /// Registra en el contenedor de dependencias todos los servicios propios de la capa Application.
+    /// </summary>
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));

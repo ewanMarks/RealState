@@ -5,6 +5,9 @@ using System.Linq.Expressions;
 
 namespace RealState.Infrastructure.Repository.Generics;
 
+/// <summary>
+/// Implementación genérica del patrón Repository para entidades de dominio.
+/// </summary>
 public class GenericRepository<T, TC>(DbContext context) : IRepository<T>
     where T : Entity
     where TC : DbContext

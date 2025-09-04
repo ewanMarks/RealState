@@ -1,5 +1,8 @@
 ﻿namespace RealState.Domain.Abstractions.Result;
 
+/// <summary>
+/// Define los diferentes tipos de errores que puede manejar el sistema.
+/// </summary>
 public enum ErrorType
 {
     Failure = 0,

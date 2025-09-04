@@ -7,9 +7,15 @@ using RealState.Domain.RealState.Properties.ValueObjects;
 
 namespace RealState.Application.UseCase.Properties.Queries.GetAll;
 
+/// <summary>
+/// Handler para la query <see cref="GetAllPropertiesQuery"/>.
+/// </summary>
 public sealed class GetAllPropertiesQueryHandler(IPropertyRepository propertyRepository)
     : IQueryHandler<GetAllPropertiesQuery, GetAllPropertiesResult>
 {
+    /// <summary>
+    /// Maneja la ejecución de la query <see cref="GetAllPropertiesQuery"/>.
+    /// </summary>
     public async Task<Result<GetAllPropertiesResult>> Handle(GetAllPropertiesQuery request, CancellationToken cancellationToken)
     {
         var filters = new PropertyFilters(

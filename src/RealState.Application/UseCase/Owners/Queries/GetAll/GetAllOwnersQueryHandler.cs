@@ -7,9 +7,15 @@ using RealState.Domain.RealState.Owners.ValueObjects;
 
 namespace RealState.Application.UseCase.Owners.Queries.GetAll;
 
+/// <summary>
+/// Handler de la query <see cref="GetAllOwnersQuery"/> encargado de obtener una lista de propietarios.
+/// </summary>
 public sealed class GetAllOwnersQueryHandler(IOwnerRepository ownerRepository)
     : IQueryHandler<GetAllOwnersQuery, GetAllOwnersResult>
 {
+    /// <summary>
+    /// Maneja la consulta para obtener propietarios con filtros y paginación.
+    /// </summary>
     public async Task<Result<GetAllOwnersResult>> Handle(GetAllOwnersQuery request, CancellationToken cancellationToken)
     {
         var filters = new OwnerFilters(

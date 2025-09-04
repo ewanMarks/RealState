@@ -3,8 +3,15 @@ using Microsoft.OpenApi.Models;
 
 namespace RealState.Api.Extensions;
 
+/// <summary>
+/// Métodos de extensión para registrar servicios adicionales en el contenedor
+/// relacionados con Swagger y autenticación JWT.
+/// </summary>
 internal static class ServiceCollectionExtensions
 {
+    /// <summary>
+    /// Configura Swagger para que soporte autenticación mediante JWT.
+    /// </summary>
     internal static IServiceCollection AddSwaggerGenWithAuth(this IServiceCollection services)
     {
         services.AddSwaggerGen(options =>

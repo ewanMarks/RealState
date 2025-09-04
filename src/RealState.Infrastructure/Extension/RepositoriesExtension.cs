@@ -11,8 +11,14 @@ using RealState.Infrastructure.Repository.RealState.Users;
 
 namespace RealState.Infrastructure.Extension;
 
+/// <summary>
+/// Métodos de extensión para registrar los repositorios en el contenedor de dependencias.
+/// </summary>
 public static class RepositoriesExtension
 {
+    /// <summary>
+    /// Registra las implementaciones de repositorios concretos en la capa <c>Infrastructure</c>.
+    /// </summary>
     public static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped(typeof(IRepository<>), typeof(RealStateRepository<>));
